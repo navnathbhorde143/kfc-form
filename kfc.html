@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL ORDER&BILL</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #kfcform{
+            margin-left: 200px;
+        }
+    </style>
+    <script>
+        function OrderClick(){
+            document.getElementById("lblName").innerHTML=document.getElementById("txtName").value;
+            document.getElementById("lblMobile").innerHTML=document.getElementById("txtMobile").value;
+            var mealName='';
+            var mealCost=0;
+            var adonName='';
+            var adonCost=0;
+
+            var optBurger=document.getElementById("optBurger");
+            var optRoller=document.getElementById("optRoller");
+            var optWings=document.getElementById("optWings");
+            var optKrusher=document.getElementById("optKrusher");
+
+            if(optBurger.checked){
+                mealName=optBurger.value;
+                mealCost=100;
+            }
+            if(optRoller.checked){
+                mealCost=100;
+                mealName=optRoller.value;
+            }
+            if(optWings.checked){
+                adonName+=optWings.value+"<br>";
+                adonCost=80;
+                mealCost=mealCost+adonCost;
+            }
+            if(optKrusher.checked){
+                adonName+=optKrusher.value;
+                adonCost=50;
+                mealCost=mealCost+adonCost;
+            }
+
+            document.getElementById("lblMeal").innerHTML=mealName;
+            document.getElementById("lblAdon").innerHTML=adonName;
+            document.getElementById("lblAmount").innerHTML="&#8377;"+mealCost;
+        }
+    </script>
+
+
+</head>
+<body class="container-fluid">
+    <div id="carouselExampleCaptions" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-intervals="100">
+            <img src="./banner.jpg" class="d-block w-100" alt="..." height="500" >
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="text-black">Choose your meals</h1>
+                <button class="btn btn-primary " data-bs-toggle="accordion"><a href="#kfcform" class="text-white">press</a></button>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-intervals="100">
+            <img src="./banner1.jpg" class="d-block w-100" alt="..." height="500">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="text-black">Choose your meals</h1>
+                <button class="btn btn-primary " data-bs-toggle="accordion"><a href="#kfcform" class="text-white">press</a></button>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-intervals="100">
+            <img src="./burger.jpg" class="d-block w-100" alt="..." height="500">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="text-black">Choose your meals</h1>
+                <button class="btn btn-primary " data-bs-toggle="accordion"><a href="#kfcform" class="text-white">press</a></button>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!----accordion-->
+     <!--<div class="row">
+          <div class="col-2"></div>-->
+          
+    <div class="accordion text-center p-5 w-75" id="kfcform">
+        <!---item 1-->
+        <div class="accordion-item">
+            <h2 class="accordion-header d-grid">
+                <button class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#customer">Customer Info</button>
+            </h2>
+            <div id="customer" class="collapse show accordion-collapse" data-bs-parent="#kfcform">
+                <div class="accordion-body">
+                    <dl>
+                        <dt>Customer name</dt>
+                        <dd>
+                            <input type="text" id="txtName" class="form-control">
+                        </dd>
+                        <dt>Mobile number</dt>
+                        <dd>
+                            <input type="text" id="txtMobile" class="form-control">
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!---item-2-->
+        <div class="accordion-item">
+            <h2 class="accordion-header d-grid">
+                <button class=" btn btn-danger" data-bs-toggle="collapse" data-bs-target="#meal">Chose your Meals</button>
+            </h2>
+            <div class="collapse show accordion-collapse" data-bs-parent="#kfcform" id="meal">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img  src="./burger.jpg" height="250" width="100%">
+                                </div>
+                                <div class="card-footer">
+                                    <input  type="radio" name="meal" id="optBurger" value="OMGBurger">OMGBurger &#8377;100/-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img  src="./roller.jpg" height="250" width="100%">
+                                </div>
+                                <div class="card-footer">
+                                    <input  type="radio" name="meal" id="optRoller" value="OMGRoller">OMGRoller &#8377;100/-
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---item-3-->
+        <div class="accordion-item">
+            <h2 class="accordion-header d-grid">
+                <button class="btn btn-danger" data-bs-target="#adon" data-bs-toggle="collapse">Choose AD-ON's</button>
+            </h2>
+            <div id="adon" class="collapse accordion-collapse show" data-bs-parent="#kfcform">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="./entree_bonelesswings.jpg"height="200" width="200">
+                                </div>
+                                <div class="card-footer">
+                                    <input type="checkbox" value="Hot Wings" id="optWings">Hot Wings &#8377;80/-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img height="200" width="200" src="./krusherbrownie.png">
+                                </div>
+                                <div class="card-footer">
+                                    <input type="checkbox" id="optKrusher" value="Krusher Brownie">Krusher Brownie &#8377;50/-
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-lg-grid">
+            <button onclick="OrderClick()" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#summary">Order</button>
+            <div class="modal" id="summary" data-bs-parent="kfcform">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Bill summary</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table tabel-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <td id="lblName"></td>
+                                </tr>
+                                <tr>
+                                    <th>Mobile</th>
+                                    <td id="lblMobile"></td>
+                                </tr>
+                                <tr>
+                                    <th>Select</th>
+                                    <td id="lblMeal"></td>
+                                </tr>
+                                <tr>
+                                    <th>Select AD-On's</th>
+                                    <td id="lblAdon"></td>
+                                </tr>
+                                <tr>
+                                    <th>Bill Amount</th>
+                                    <td id="lblAmount"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" onclick="window.print()">Print</button>
+                        <button data-bs-dismiss="modal" class="btn btn-primary" onclick="okClick()" id="ok">Ok</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="/node_modules/jQuery/tmp/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
